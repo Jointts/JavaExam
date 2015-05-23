@@ -1,0 +1,2 @@
+Tallinn Airport; Estonia; Europe; 500;
+Ankara Airport; Turkey; Europe; 300;
