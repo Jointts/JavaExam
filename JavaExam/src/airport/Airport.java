@@ -1,5 +1,9 @@
 package airport;
 
+import java.util.ArrayList;
+
+import airplane.Airplane;
+
 public class Airport {
 	
 	String airport;
@@ -7,6 +11,7 @@ public class Airport {
     String continent;
     String airfield_length;
     int passengers = 0;
+    ArrayList<FlightConnection> flightConnections = new ArrayList<FlightConnection>();
     
     public Airport(String airport, String country, String continent, String airfield_length){
     	this.airport = airport;
@@ -42,5 +47,9 @@ public class Airport {
     public int getPassengers(){
     	return passengers;
     }
+    
+    public void addFlightConnection(String connection, int distance, String service, int price, Airplane airplane){
+		flightConnections.add(new FlightConnection(connection, distance, service, price, airplane));
+	}
 	
 }

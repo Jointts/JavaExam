@@ -31,4 +31,5 @@ public class AirportController {
 		Stream<Airport> airportFilteredStream = airportList.stream().filter(filterCountry);
 		airportFilteredStream.forEach(u -> u.displayInfo());
 	}
+	
 }
