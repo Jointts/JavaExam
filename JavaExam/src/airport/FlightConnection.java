@@ -1,5 +1,7 @@
 package airport;
 
+import java.util.ArrayList;
+
 import airplane.Airplane;
 
 public class FlightConnection {
@@ -16,5 +18,6 @@ public class FlightConnection {
 		this.price = price;
 		this.airplane = airplane;
 		this.connection = connection;
+		ListConnections.addConnection(this);
 	}
 }

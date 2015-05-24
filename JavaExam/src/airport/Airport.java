@@ -6,7 +6,7 @@ import airplane.Airplane;
 
 public class Airport {
 	
-	String airport;
+	String airport = "null";
 	String country;
     String continent;
     String airfield_length;
@@ -48,8 +48,5 @@ public class Airport {
     	return passengers;
     }
     
-    public void addFlightConnection(String connection, int distance, String service, int price, Airplane airplane){
-		flightConnections.add(new FlightConnection(connection, distance, service, price, airplane));
-	}
 	
 }
