@@ -1,3 +1,2 @@
 Tallinn Airport; Estonia; Europe; 500;
 Ankara Airport; Turkey; Europe; 300;
-Tallinn Airport; Estonia; Europe; 500;

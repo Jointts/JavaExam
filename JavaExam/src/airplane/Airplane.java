@@ -5,8 +5,12 @@ public class Airplane {
 	int speed;
 	int passengers;
 	String name;
-
-	public int flightLength(int flightDistance) {
-		return flightDistance/speed;
+	
+	public int getSpeed(){
+		return speed;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }

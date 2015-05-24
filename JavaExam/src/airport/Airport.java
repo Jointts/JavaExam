@@ -47,6 +47,5 @@ public class Airport {
     public int getPassengers(){
     	return passengers;
     }
-    
 	
 }
