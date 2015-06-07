@@ -1,2 +1,22 @@
-Tallinn Airport; Estonia; Europe; 500;
-Ankara Airport; Turkey; Europe; 300;
+Tallinn Airport; Estonia; Europe; 2200;
+Ankara Airport; Turkey; Europe; 2000;
+Krakow Airport; Poland; Europe; 1800;
+Firenze Airport; Italy; Europe; 1600;
+Prague Airport; Czech Republic; Europe; 1400;
+Madrid Airport; Spain; Europe; 1200;
+New York Airport; USA; America; 1000;
+Brazil Airport; Brazil; America; 800;
+Peru Airport; Peru; America; 600;
+Buenos Aires Airport; Buenos Aires; America; 400;
+Mexico Airport; Mexico; America; 200;
+San Jose Airport; Costa Rica; America; 400;
+Tokyo Airport; Japan; Asia; 600;
+Beijing Airport; China; Asia; 800;
+Incheon Airport; South-Korea; Asia; 1000;
+Visakhapatnam Airport; India; Asia; 1200;
+Taipei Songshan Airport; Taiwan; Asia; 1400;
+Chinggis khaan Airport; Mongolia; Asia; 1600;
+Cape Town Airport; South Africa; Africa; 1800;
+Cairo International Airport; Egypt; Africa; 2000;
+
+

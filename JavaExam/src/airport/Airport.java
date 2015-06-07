@@ -2,8 +2,6 @@ package airport;
 
 import java.util.ArrayList;
 
-import airplane.Airplane;
-
 public class Airport {
 	
 	String airport = "null";
@@ -42,6 +40,11 @@ public class Airport {
     
     public String getAirfieldLength(){
     	return airfield_length;
+    }
+    
+    public int setPassengers(int passengers){
+		this.passengers = passengers;
+    	return passengers; 	
     }
     
     public int getPassengers(){

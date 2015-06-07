@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import airplane.ATR72;
 import airport.AirportController;
-import airport.ListConnections;
 import fileReader.FileReader;
 
 public class Main {
@@ -17,8 +16,12 @@ public class Main {
 		
 		airportController.addAirportConnection("Prague-Ankara", 600, "Estonian Air", 119, new ATR72());
 		airportController.addAirportConnection("Tallinn-Prague", 600, "Estonian Air", 119, new ATR72());
-		airportController.displayAllConnections();
-		//airportController.flightTime("Tallinn-Ankara");
+		//airportController.displayAllConnections();
 		airportController.findConnection("Tallinn-Ankara");
+		airportController.flightTime("Tallinn-Ankara");
+		airportController.findConnection("Tallinn-Prague");
+		airportController.flightTime("Tallinn-Prague");
+		
+
 	}
 }

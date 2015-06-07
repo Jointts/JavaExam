@@ -1,8 +1,6 @@
 package airport;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import airplane.Airplane;
@@ -10,6 +8,9 @@ import airplane.Airplane;
 public class AirportController {
 
 	ArrayList<Airport> airportList = new ArrayList<Airport>();
+	static int x;
+	static ArrayList<Connection> yolo = new ArrayList<Connection>();
+	static String midPoint;
 
 	public void createAirport(String airport, String country, String continent,
 			String airfield_length) {
@@ -44,7 +45,7 @@ public class AirportController {
 		});
 	}
 
-	public void findConnection(String asked_connection) {
+	public Connection findConnection(String asked_connection) {
 
 		String[] fromTo = asked_connection.split("-");
 		String from = fromTo[0];
@@ -53,19 +54,40 @@ public class AirportController {
 		Stream<FlightConnection> flightConnections = ListConnections.flightConnections
 				.stream().filter(u -> u.connection.equals(asked_connection));
 		flightConnections.forEach(u -> {
-			System.out.println("From: " + from + "\nTo: " + to);
+			System.out.println("------------------------------------");
+			System.out.println("Route is: " + from + "-" + to);
 		});
-		
+
 		Stream<FlightConnection> flightConnections2 = ListConnections.flightConnections
-				.stream();
-		flightConnections2.forEach(u -> {
-			if(u.connection.contains(from + "-")){
-				Stream<FlightConnection> flightConnections3 = ListConnections.flightConnections
-						.stream();
-				for(FlightConnection v : ListConnections.flightConnections)
-					if(v.connection.contains(u.getTo() + "-" + to)){String route = "Route is: " + u.connection + "-" + to; System.out.println(route); return;}
-				;};
-		});
+				.stream().filter(u -> u.connection.contains(from + "-"));
+		flightConnections2
+				.forEach(u -> {
+
+					Stream<FlightConnection> flightConnections3 = ListConnections.flightConnections
+							.stream().filter(
+									v -> v.connection.contains(u.getTo() + "-"
+											+ to));
+					midPoint = from + "-" + u.getTo();
+					
+					Stream<FlightConnection> dummy = ListConnections.flightConnections
+							.stream().filter(
+									v -> v.connection.contains(u.getTo() + "-"
+											+ to));
+					midPoint = from + "-" + u.getTo();
+					
+					if(x==0){System.out.println("------------------------------------");
+					System.out.println("Route is: " + u.connection + "-" + to);x++;}
+
+					Stream<FlightConnection> flightConnections5 = ListConnections.flightConnections
+							.stream();
+
+					yolo.add(new Connection(flightConnections3.findFirst(),
+							flightConnections5.filter(
+									v -> v.connection.equals(midPoint))
+									.findFirst()));
+
+				});
+		return yolo.get(0);
 
 	}
 
@@ -73,14 +95,56 @@ public class AirportController {
 
 		Stream<FlightConnection> flightConnections = ListConnections.flightConnections
 				.stream().filter(u -> u.connection.equals(asked_connection));
+		
+		Stream<FlightConnection> flightConnections2 = ListConnections.flightConnections
+				.stream().filter(u -> u.connection.equals(asked_connection));
+		
+		if(flightConnections2.count()>0){
+
 		flightConnections.forEach(u -> {
 			double hoursDouble = (double) u.distance
 					/ (double) u.airplane.getSpeed();
+			if (u.airplane.getName() == "ATR-72" && u.distance < 700) {
+				hoursDouble += 1 / 6;
+			}
 			double minutesDouble = hoursDouble / (1.0 / 60.0) % 60;
 			int hours = (int) hoursDouble;
 			int minutes = (int) minutesDouble;
-			System.out.println(hours + "h " + minutes + "min");
+			System.out.println("------------------------------------");
+			System.out.println("Time to travel: " + hours + "h " + minutes
+					+ "min");
+			return;
 		});
+		}else{
+
+		double speed1 = findConnection(asked_connection).getFirst().get().airplane
+				.getSpeed();
+		double distance1 = findConnection(asked_connection).getFirst().get().distance;
+		double speed2 = findConnection(asked_connection).getSecond().get().airplane
+				.getSpeed();
+		double distance2 = findConnection(asked_connection).getSecond().get().distance;
+
+		double hoursDouble1 = distance1 / speed1;
+		if (findConnection(asked_connection).getFirst().get().airplane
+				.getName() == "ATR-72"
+				&& findConnection(asked_connection).getFirst().get().distance < 700.0) {
+			hoursDouble1 += 0.15;
+		}
+		double hoursDouble2 = distance2 / speed2;
+		if (findConnection(asked_connection).getSecond().get().airplane
+				.getName() == "ATR-72"
+				&& findConnection(asked_connection).getFirst().get().distance < 700.0) {
+			hoursDouble2 += 0.15;
+		}
+		double hoursTotal = hoursDouble1 + hoursDouble2 + 0.75;
+		double minutesTotal = hoursTotal / (1.0 / 60.0) % 60;
+		int hours = (int) hoursTotal;
+		int minutes = (int) minutesTotal;
+		System.out.println("------------------------------------");
+		System.out.println("Time to travel: " + hours + "h " + minutes + "min");
+
+		return 0;
+	}
 		return 0;
 
 	}

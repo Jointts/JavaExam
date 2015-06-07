@@ -1,7 +1,5 @@
 package airport;
 
-import java.util.ArrayList;
-
 import airplane.Airplane;
 
 public class FlightConnection {
@@ -40,5 +38,9 @@ public class FlightConnection {
 	public String getTo(){
 		String[] connection = this.connection.split("-");		
 		return connection[1];
+	}
+	
+	public FlightConnection getInstance(){
+		return this;
 	}
 }
